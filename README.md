@@ -7,6 +7,9 @@
 `helm package .`
 
 # installation of helm chart
+
+`kubectl create ns fluentd`
+
 `helm install my-logging-stack ./my-logging-stack-0.1.0.tgz`
 
 # set credentials
