@@ -1,22 +1,22 @@
 replicaCount: 1
 
 elasticsearch:
-  image: "elasticsearch:7.9.1"
+  image: "docker.elastic.co/elasticsearch/elasticsearch:7.17.24"
   resources: {}
   service:
     port: 9200
 
 kibana:
-  image: "kibana:7.9.1"
+  image: "docker.elastic.co/kibana/kibana:7.17.24"
   resources: {}
   service:
     port: 5601
 
 fluentd:
-  image: "aimvector/fluentd-demo"
+  image: "dharshan8/fluentd-custom"
   resources: {}
   config: |
     ################################################################
     # This source gets all logs from local docker host
-    @include pods-kind-fluent.conf
-    @include elastic-fluent.conf
+    @include fluent.conf
+

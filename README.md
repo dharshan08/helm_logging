@@ -1,16 +1,9 @@
-# clone the repository
-`https://github.com/dharshan08/helm_logging.git`
-
-`cd helm_logging`
-
-# packaging the helm chart
-`helm package .`
 
 # installation of helm chart
 
 `kubectl create ns fluentd`
 
-`helm install my-logging-stack ./my-logging-stack-0.1.0.tgz`
+`helm install my-logging-stack ./helm_logging -n fluentd`
 
 # set credentials
 `kubectl create secret generic elasticsearch-credentials --from-literal=password='kibana'`
