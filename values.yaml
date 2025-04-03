@@ -13,7 +13,7 @@ kibana:
     port: 5601
 
 fluentd:
-  image: "dharshan8/fluentd-custom"
+  image: "dharshan8/fluentd"
   resources: {}
   config: |
     ################################################################
