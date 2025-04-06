@@ -15,8 +15,4 @@ kibana:
 fluentd:
   image: "dharshan8/fluentd"
   resources: {}
-  config: |
-    ################################################################
-    # This source gets all logs from local docker host
-    @include fluent.conf
 

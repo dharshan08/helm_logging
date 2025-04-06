@@ -18,17 +18,24 @@ spec:
         version: v1
     spec:
       serviceAccount: fluentd
+      serviceAccountName: fluentd
       tolerations:
       - key: node-role.kubernetes.io/master
         effect: NoSchedule
+      initContainers:
+      - name: wait-for-elasticsearch
+        image: busybox
+        command: ['sh', '-c', 'until nc -z elasticsearch.fluentd.svc.cluster.local 9200; do echo waiting for elasticsearch; sleep 2; done']
       containers:
       - name: fluentd
         image: {{ .Values.fluentd.image }}
         env:
           - name: FLUENT_ELASTICSEARCH_HOST
-            value: "elasticsearch.default.svc.cluster.local"
+            value: "elasticsearch.fluentd.svc.cluster.local"
           - name: FLUENT_ELASTICSEARCH_PORT
             value: "9200"
+          - name: FLUENT_ELASTICSEARCH_SCHEME
+            value: "http"
           - name: FLUENT_ELASTICSEARCH_USER
             valueFrom:
               secretKeyRef:

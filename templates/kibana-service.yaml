@@ -12,3 +12,4 @@ spec:
     - protocol: TCP
       port: {{ .Values.kibana.service.port }}
       targetPort: 5601
+      nodePort: 31601

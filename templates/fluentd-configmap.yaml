@@ -1,4 +1,3 @@
-#@include file-fluent.conf
 
 apiVersion: v1
 kind: ConfigMap
@@ -18,8 +17,11 @@ data:
       @type copy
       <store>
         @type elasticsearch
-        host elasticsearch
+        host elasticsearch.fluentd.svc.cluster.local
         port 9200
+        scheme "#{ENV['FLUENT_ELASTICSEARCH_SCHEME'] || 'http'}"
+        user elastic
+        password kibana
         verify_es_version_at_startup false
         default_elasticsearch_version 7
         logstash_format true
