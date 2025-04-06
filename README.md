@@ -11,5 +11,5 @@
  
 # access kibana dashboard
 
-http://<NODE-IP>:31601
+http://\<NODE-IP>\:31601
 
